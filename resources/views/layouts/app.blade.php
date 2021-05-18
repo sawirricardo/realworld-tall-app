@@ -60,7 +60,8 @@
                 <a href="{{ route('front.index') }}" class="logo-font">conduit</a>
                 <span class="attribution">
                     An interactive learning project from <a href="https://thinkster.io">Thinkster</a>. Code &amp; design
-                    licensed under MIT.
+                    licensed under MIT. Implementation by <a href="https://github.com/sawirricardo" target="_blank"
+                        rel="noopener noreferrer">Ricardo Sawir</a>
                 </span>
             </div>
         </footer>

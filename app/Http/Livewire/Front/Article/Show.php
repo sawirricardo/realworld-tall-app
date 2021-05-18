@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Article;
 
+use Artesaos\SEOTools\Facades\SEOTools;
 use Livewire\Component;
 
 class Show extends Component
@@ -22,6 +23,9 @@ class Show extends Component
         if (auth()->check()) {
             $this->user = \App\Models\User::find(auth()->user()->getAuthIdentifier())->toArray();
         }
+
+        SEOTools::setTitle("{$article->title} | Conduit X Ricardo Sawir", false);
+        SEOTools::setDescription($article->description);
     }
 
     public function render()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Tag;
 
+use Artesaos\SEOTools\Facades\SEOTools;
 use Livewire\Component;
 
 class Show extends Component
@@ -12,6 +13,9 @@ class Show extends Component
     {
         $tag->load(['articles']);
         $this->tag = $tag;
+
+        SEOTools::setTitle("{$tag->name} | Conduit X Ricardo Sawir", false);
+        SEOTools::setDescription($tag->name);
     }
 
     public function render()
