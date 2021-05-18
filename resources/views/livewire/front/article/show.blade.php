@@ -26,6 +26,15 @@
                         &nbsp;
                         Favorite Post <span class="counter">({{ $article->favoritersCountReadable() }})</span>
                     </button>
+
+                    @auth
+                    @if ($article->author->id === auth()->user()->getAuthIdentifier())
+                    <a class="btn btn-sm btn-outline-secondary"
+                        href="{{ route('app.article.edit',['article'=>$article->id]) }}">
+                        <i class="ion-edit"></i>
+                        Edit Article</a>
+                    @endif
+                    @endauth
                 </div>
 
             </div>
@@ -39,7 +48,7 @@
                         {{ $article->description }}
                     </p>
                     <h2 id="introducing-ionic">{{ $article->title }}</h2>
-                    <p>{{ $article->body }}</p>
+                    <p>{!! Str::of($article->body)->markdown() !!}</p>
                 </div>
             </div>
 
@@ -67,25 +76,41 @@
                         &nbsp;
                         Favorite Post <span class="counter">({{ $article->favoritersCountReadable() }})</span>
                     </button>
+                    @auth
+                    @if ($article->author->id === auth()->user()->getAuthIdentifier())
+                    <a class="btn btn-sm btn-outline-secondary"
+                        href="{{ route('app.article.edit',['article'=>$article->id]) }}">
+                        <i class="ion-edit"></i>
+                        Edit Article</a>
+                    @endif
+                    @endauth
                 </div>
             </div>
 
             <div class="row">
 
                 <div class="col-xs-12 col-md-8 offset-md-2">
-
-                    <form class="card comment-form">
+                    @auth
+                    <form wire:submit.prevent='saveComment' class="card comment-form">
                         <div class="card-block">
-                            <textarea class="form-control" placeholder="Write a comment..." rows="3"></textarea>
+                            <textarea wire:model='comment' class="form-control" placeholder="Write a comment..."
+                                rows="3"></textarea>
                         </div>
                         <div class="card-footer">
-                            <img src="http://i.imgur.com/Qr71crq.jpg" class="comment-author-img" />
+                            <img src="{{ $user['image'] }}" class="comment-author-img" alt="{{ $user['name'] }}" />
                             <button class="btn btn-sm btn-primary">
                                 Post Comment
                             </button>
                         </div>
                     </form>
-
+                    @endauth
+                    @guest
+                    <div class="card comment-form">
+                        <div class="card-block">
+                            <a href="{{ route('app.login') }}">Login</a> to comment this article.
+                        </div>
+                    </div>
+                    @endguest
                     @forelse ($article->comments as $comment)
                     <div class="card">
                         <div class="card-block">
@@ -93,19 +118,21 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <a href="" class="comment-author">
-                                <img src="http://i.imgur.com/Qr71crq.jpg" class="comment-author-img" />
+                            <a href="{{ route('front.user.show',['user'=>$comment->author->username]) }}"
+                                class="comment-author">
+                                <img src="{{ $comment->author->image }}" class="comment-author-img" />
                             </a>
                             &nbsp;
-                            <a href="" class="comment-author">Jacob Schmidt</a>
-                            <span class="date-posted">Dec 29th</span>
+                            <a href="{{ route('front.user.show',['user'=>$comment->author->username]) }}"
+                                class="comment-author">{{ $comment->author->name }}</a>
+                            <span class="date-posted">{{ $comment->created_at }}</span>
                         </div>
                     </div>
                     @empty
 
                     @endforelse
 
-                    <div class="card">
+                    {{-- <div class="card">
                         <div class="card-block">
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.
                             </p>
@@ -122,7 +149,7 @@
                                 <i class="ion-trash-a"></i>
                             </span>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
 

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         $this
-            ->call(TagSeeder::class);
+            ->call(TagSeeder::class)
+            ->call(ArticleTagSeeder::class);
     }
 }

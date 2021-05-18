@@ -14,11 +14,16 @@
                 <div class="col-md-9">
                     <div class="feed-toggle">
                         <ul class="nav nav-pills outline-active">
+                            @auth
                             <li class="nav-item">
-                                <a class="nav-link disabled" href="">Your Feed</a>
+
+                                <a wire:click="$toggle('viewingPrivateFeed')"
+                                    class="nav-link {{ $viewingPrivateFeed ? 'active':'' }}" href="#">Your Feed</a>
                             </li>
+                            @endauth
                             <li class="nav-item">
-                                <a class="nav-link active" href="">Global Feed</a>
+                                <a wire:click="$toggle('viewingPrivateFeed')"
+                                    class="nav-link {{ $viewingPrivateFeed ? '':'active' }}" href="#">Global Feed</a>
                             </li>
                         </ul>
                     </div>

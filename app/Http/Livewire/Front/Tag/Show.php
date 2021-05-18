@@ -16,6 +16,8 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.front.tag.show');
+        return view('livewire.front.tag.show', [
+            'tags' => \App\Models\Tag::all()
+        ]);
     }
 }

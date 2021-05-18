@@ -14,9 +14,9 @@ class Edit extends Component
     }
 
     protected $rules = [
-        'title' => ['required', 'string'],
-        'body' => ['required', 'string'],
-        'description' => ['string'],
+        'article.title' => ['required', 'string'],
+        'article.body' => ['required', 'string'],
+        'article.description' => ['string'],
     ];
 
     public function render()
@@ -31,5 +31,12 @@ class Edit extends Component
         $this->article->save();
 
         return redirect()->route('app.article.edit', ['article' => $this->article->id]);
+    }
+
+    public function deleteArticle()
+    {
+        $this->article->delete();
+
+        return redirect()->route('front.index');
     }
 }

@@ -42,8 +42,8 @@ Route::prefix('app')
         Route::get('settings', \App\Http\Livewire\App\Setting::class)->name('setting');
 
         Route::name('article.')->group(function () {
-            Route::get('create', \App\Http\Livewire\App\Article\Create::class)->name('create');
+            Route::get('article/create', \App\Http\Livewire\App\Article\Create::class)->name('create');
 
-            Route::get('edit/{article}', \App\Http\Livewire\App\Article\Edit::class)->name('edit');
+            Route::get('article/edit/{article}', \App\Http\Livewire\App\Article\Edit::class)->name('edit');
         });
     });
