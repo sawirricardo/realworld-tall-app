@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Menu\Laravel\Menu;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
+
+    public function bootMenu()
     {
         //
     }
