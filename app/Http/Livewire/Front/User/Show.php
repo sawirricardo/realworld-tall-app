@@ -29,10 +29,10 @@ class Show extends Component
 
     public function followAuthor()
     {
-        $user = \App\Models\User::find(auth()->id());
+        $this->loggedInUser = \App\Models\User::find(auth()->id());
 
-        $user->toggleFollow($this->article->author);
+        $this->loggedInUser->toggleFollow($this->user);
 
-        $this->article = \App\Models\Article::find($this->article->id);
+        $this->user = \App\Models\User::find($this->user->id);
     }
 }
