@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\App\Article;
 
+use Artesaos\SEOTools\Facades\SEOTools;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -17,6 +18,9 @@ class Edit extends Component
         $this->article_tags = $article->tags->map(function ($tag) {
             return $tag->id;
         });
+
+        SEOTools::setTitle('Edit article', false);
+        SEOTools::setDescription('Article is being edited.');
     }
 
     protected $rules = [

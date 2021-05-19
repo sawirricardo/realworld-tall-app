@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\App;
 
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
@@ -32,6 +33,11 @@ class Register extends Component
                     ->uncompromised()
             ],
         ];
+    }
+
+    public function mount()
+    {
+        SEOTools::setTitle('Sign Up', false);
     }
 
     public function render()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\App;
 
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -16,6 +17,11 @@ class Login extends Component
         'credentials.email' => ['required', 'email'],
         'credentials.password' => ['required'],
     ];
+
+    public function mount()
+    {
+        SEOTools::setTitle('Login', false);
+    }
 
     public function render()
     {

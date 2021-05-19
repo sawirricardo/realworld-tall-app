@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\App\Article;
 
+use Artesaos\SEOTools\Facades\SEOTools;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -14,6 +15,9 @@ class Create extends Component
     public function mount()
     {
         $this->article = new \App\Models\Article();
+
+        SEOTools::setTitle('Create new article', false);
+        SEOTools::setDescription('New article created here.');
     }
 
     protected $rules = [

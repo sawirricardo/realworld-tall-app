@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\App;
 
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
@@ -15,6 +16,8 @@ class Setting extends Component
     {
         $userId = auth()->user()->getAuthIdentifier();
         $this->user = \App\Models\User::find($userId)->toArray();
+
+        SEOTools::setTitle('My setting', false);
     }
 
     protected function rules()
