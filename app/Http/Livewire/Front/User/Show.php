@@ -15,18 +15,17 @@ class Show extends Component
     public function updatedViewingFavoriteArticles()
     {
         if ($this->viewingFavoriteArticles) {
-            $this->articles = $this->user->favorites(\App\Models\Article::class)->get();
+            $this->articles = $this->user->favorites(\App\Models\Article::class)->with(['author'])->get();
         }
 
         if (!$this->viewingFavoriteArticles) {
-            $this->articles = \App\Models\Article::where('user_id', '=', $this->user->id)->get();
+            $this->articles = \App\Models\Article::where('user_id', '=', $this->user->id)->with(['author'])->get();
         }
     }
 
     public function mount(\App\Models\User $user)
     {
-        $user->load(['articles']);
-        $this->articles = $user->articles;
+        $this->articles = \App\Models\Article::where('user_id', '=', $this->user->id)->with(['author'])->get();
         $this->user = $user;
         $this->loggedInUser = \App\Models\User::find(auth()->id());
 

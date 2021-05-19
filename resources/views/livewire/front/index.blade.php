@@ -40,9 +40,9 @@
                                     class="author">{{ $article->author->name }}</a>
                                 <span class="date">{{ $article->created_at }}</span>
                             </div>
-                            <button class="btn btn-outline-primary btn-sm pull-xs-right">
+                            {{-- <button class="btn btn-outline-primary btn-sm pull-xs-right">
                                 <i class="ion-heart"></i> {{ $article->favoritersCountReadable() }}
-                            </button>
+                            </button> --}}
                         </div>
                         <a href="{{ route('front.article.show',['article' => $article->slug]) }}" class="preview-link">
                             <h1>{{ $article->title }}</h1>

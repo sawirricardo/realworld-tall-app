@@ -72,9 +72,9 @@
                                 <span class="date">{{ $article->created_at }}</span>
                             </div>
 
-                            @guest
+                            {{-- @guest
                             <a href="{{ route('app.login') }}" class="btn btn-outline-primary btn-sm pull-xs-right">
-                                <i class="ion-heart"></i> {{ $article->favoritersCountReadable() }}
+                            <i class="ion-heart"></i> {{ $article->favoritersCountReadable() }}
                             </a>
                             @endguest
 
@@ -84,7 +84,7 @@
                                 <i class="ion-heart"></i> {{ $article->favoritersCountReadable() }}
                             </button>
                             @endif
-                            @endauth
+                            @endauth --}}
                         </div>
                         <a href="{{ route('front.article.show',['article'=>$article->slug]) }}" class="preview-link">
                             <h1>{{ $article->title }}</h1>
