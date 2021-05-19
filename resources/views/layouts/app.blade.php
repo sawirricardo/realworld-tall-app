@@ -18,40 +18,41 @@
         <nav class="navbar navbar-light">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('front.index') }}">conduit</a>
-                <ul class="nav navbar-nav pull-xs-right">
+                {!! Menu::app() !!}
+                {{-- <ul class="nav navbar-nav pull-xs-right">
                     <li class="nav-item">
                         <!-- Add "active" class when you're on that page" -->
-                        <a class="nav-link active" href="{{ route('front.index') }}">Home</a>
-                    </li>
-                    @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('app.article.create') }}">
-                            <i class="ion-compose"></i>&nbsp;New Post
+                        <a class="nav-link" href="{{ route('front.index') }}">Home</a>
+                </li>
+                @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('app.article.create') }}">
+                        <i class="ion-compose"></i>&nbsp;New Post
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('app.setting') }}">
+                        <i class="ion-gear-a"></i>&nbsp;Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <form method="POST" action="{{ route('logout') }}">
+                        <a href="#" class="nav-link" onclick="event.preventDefault();this.closest('form').submit()">
+                            Logout
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('app.setting') }}">
-                            <i class="ion-gear-a"></i>&nbsp;Settings
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}">
-                            <a href="#" class="nav-link" onclick="event.preventDefault();this.closest('form').submit()">
-                                Logout
-                            </a>
-                            @csrf
-                        </form>
-                    </li>
-                    @endauth
-                    @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('app.login') }}">Sign in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('app.register') }}">Sign up</a>
-                    </li>
-                    @endguest
-                </ul>
+                        @csrf
+                    </form>
+                </li>
+                @endauth
+                @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('app.login') }}">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('app.register') }}">Sign up</a>
+                </li>
+                @endguest
+                </ul> --}}
             </div>
         </nav>
         {{ $slot }}
@@ -66,6 +67,7 @@
             </div>
         </footer>
         @livewireScripts
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     </body>
 
 </html>

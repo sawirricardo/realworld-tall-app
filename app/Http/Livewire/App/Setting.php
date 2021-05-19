@@ -63,5 +63,11 @@ class Setting extends Component
         if (array_key_exists('password', $this->user)) {
             $user->password = Hash::make($this->user['password']);
         }
+
+        $user->save();
+
+        $this->user = $user->toArray();
+
+        session()->flash('message', 'Your settings has been saved');
     }
 }

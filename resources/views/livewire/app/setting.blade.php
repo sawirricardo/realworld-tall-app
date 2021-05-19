@@ -30,6 +30,11 @@
                                 <input wire:model='user.password' class="form-control form-control-lg" type="password"
                                     placeholder="Password">
                             </fieldset>
+                            @if (session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session('message') }}
+                            </div>
+                            @endif
                             <button class="btn btn-lg btn-primary pull-xs-right">
                                 Update Settings
                             </button>

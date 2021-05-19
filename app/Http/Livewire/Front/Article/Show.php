@@ -9,7 +9,7 @@ class Show extends Component
 {
     public $article;
     public $user;
-    public $comment;
+    public $comment = '';
 
     protected $rules = [
         'comment' => ['required', 'string']
@@ -38,6 +38,14 @@ class Show extends Component
         $this->validate();
 
         $commenter = \App\Models\User::find(auth()->user()->getAuthIdentifier());
-        $commenter->comments();
+
+        $comment = new \App\Models\Comment();
+        $comment->article_id = $this->article->id;
+        $comment->user_id = $commenter->id;
+        $comment->body = $this->comment;
+        $comment->save();
+
+        $this->article = \App\Models\Article::find($this->article->id);
+        $this->comment = '';
     }
 }
