@@ -38,6 +38,10 @@
                             <button class="btn btn-lg btn-primary pull-xs-right">
                                 Update Settings
                             </button>
+                            <a href="{{ route('front.user.show',['user'=>$user['username']]) }}"
+                                class="btn btn-lg btn-outline-secondary pull-xs-right">
+                                View profile
+                            </a>
                         </fieldset>
                     </form>
                 </div>

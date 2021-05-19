@@ -10,6 +10,18 @@ class Show extends Component
     public $user;
     public $articles;
     public $loggedInUser;
+    public $viewingFavoriteArticles = false;
+
+    public function updatedViewingFavoriteArticles()
+    {
+        if ($this->viewingFavoriteArticles) {
+            $this->articles = $this->user->favorites(\App\Models\Article::class)->get();
+        }
+
+        if (!$this->viewingFavoriteArticles) {
+            $this->articles = \App\Models\Article::where('user_id', '=', $this->user->id)->get();
+        }
+    }
 
     public function mount(\App\Models\User $user)
     {

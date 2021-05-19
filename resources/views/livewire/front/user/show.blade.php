@@ -49,10 +49,14 @@
                     <div class="articles-toggle">
                         <ul class="nav nav-pills outline-active">
                             <li class="nav-item">
-                                <a class="nav-link active" href="">My Articles</a>
+                                <button class="nav-link {{ $viewingFavoriteArticles ? '' : 'active' }}"
+                                    wire:click="$toggle('viewingFavoriteArticles')">
+                                    Articles</button>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Favorited Articles</a>
+                                <button class="nav-link {{ $viewingFavoriteArticles ? 'active' : '' }}"
+                                    wire:click="$toggle('viewingFavoriteArticles')">Favorited
+                                    Articles</button>
                             </li>
                         </ul>
                     </div>
@@ -89,7 +93,7 @@
                         </a>
                     </div>
                     @empty
-
+                    <div>{{ $user->name }} has not favorited any article yet.</div>
                     @endforelse
                     {{-- <div class="article-preview">
                         <div class="article-meta">
