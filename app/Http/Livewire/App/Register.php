@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\App;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
 
@@ -49,5 +50,9 @@ class Register extends Component
         $user->email = $this->credentials['email'];
 
         $user->save();
+
+        Auth::loginUsingId($user->id);
+
+        return redirect()->route('front.index');
     }
 }

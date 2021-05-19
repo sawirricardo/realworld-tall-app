@@ -5,7 +5,9 @@
             <div class="container">
                 <h1 class="logo-font">conduit X Ricardo Sawir</h1>
                 <p>A place to share your knowledge.</p>
-                <p>Implemented by Ricardo Sawir</p>
+                <p>Implemented by <a style="color:white;text-decoration:underline" target="_blank"
+                        href="https://github.com/sawirricardo">Ricardo
+                        Sawir</a></p>
             </div>
         </div>
 
