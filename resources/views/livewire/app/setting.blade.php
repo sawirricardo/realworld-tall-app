@@ -30,9 +30,9 @@
                                 <input wire:model='user.password' class="form-control form-control-lg" type="password"
                                     placeholder="Password">
                             </fieldset>
-                            @if (session()->has('message'))
+                            @if (session()->has('flash.banner'))
                             <div class="alert alert-success">
-                                {{ session('message') }}
+                                {{ session('flash.banner') }}
                             </div>
                             @endif
                             <button class="btn btn-lg btn-primary pull-xs-right">

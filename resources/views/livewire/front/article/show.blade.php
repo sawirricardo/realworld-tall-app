@@ -111,6 +111,13 @@
                         </div>
                     </div>
                     @endguest
+
+                    @if (session()->has('flash.banner'))
+                    <div class="alert alert-success">
+                        {{ session('flash.banner') }}
+                    </div>
+                    @endif
+
                     @forelse ($article->comments as $comment)
                     <div class="card">
                         <div class="card-block">
@@ -126,6 +133,12 @@
                             <a href="{{ route('front.user.show',['user'=>$comment->author->username]) }}"
                                 class="comment-author">{{ $comment->author->name }}</a>
                             <span class="date-posted">{{ $comment->created_at }}</span>
+                            @auth
+                            @if ($comment->author->id === auth()->id())
+                            <button wire:click="deleteComment({{ $comment->id }})"
+                                class="btn btn-outline-danger">Delete</button>
+                            @endif
+                            @endauth
                         </div>
                     </div>
                     @empty

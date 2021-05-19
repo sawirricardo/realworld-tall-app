@@ -17,8 +17,29 @@
                                 <textarea wire:model='article.body' class="form-control" rows="8"
                                     placeholder="Write your article (in markdown)"></textarea>
                             </fieldset>
+                            <div class="row">
+                                @forelse ($tags as $tag)
+                                <div wire:key='{{ $tag->id }}' class="col-xs-4 col-md-2">
+                                    <fieldset class="form-group">
+                                        <label for="tag_{{ $tag->slug }}">
+                                            <input id="tag_{{ $tag->slug }}" class="form-checkbox" type="checkbox"
+                                                name="tag" value="{{ $tag->id }}" wire:model='article_tags' />
+                                            {{ $tag->name }}
+                                        </label>
+                                    </fieldset>
+                                </div>
+                                @empty
+
+                                @endforelse
+                            </div>
                             <fieldset class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter tags">
+                                @if (session()->has('message-tag'))
+                                <div class="alert alert-success">
+                                    {{ session('message-tag') }}
+                                </div>
+                                @endif
+                                <input type="text" class="form-control" placeholder="Enter tags" wire:model="tag">
+                                <button type="button" wire:click="createTag">Create Tag</button>
                                 <div class="tag-list"></div>
                             </fieldset>
                             <button class="btn btn-lg pull-xs-right btn-primary" type="button" wire:click='saveArticle'>

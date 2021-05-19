@@ -68,6 +68,6 @@ class Setting extends Component
 
         $this->user = $user->toArray();
 
-        session()->flash('message', 'Your settings has been saved');
+        session()->flash('flash.banner', 'Your settings has been saved');
     }
 }

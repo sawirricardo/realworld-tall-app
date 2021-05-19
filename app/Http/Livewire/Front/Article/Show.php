@@ -48,4 +48,14 @@ class Show extends Component
         $this->article = \App\Models\Article::find($this->article->id);
         $this->comment = '';
     }
+
+    public function deleteComment($id)
+    {
+        $comment = \App\Models\Comment::findOrFail($id);
+        $comment->delete();
+
+        $this->article = \App\Models\Article::find($this->article->id);
+
+        session()->flash('flash.banner', 'Successfully deleted your comment.');
+    }
 }

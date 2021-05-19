@@ -23,6 +23,7 @@ class Index extends Component
     {
         return view('livewire.front.index', [
             'articles' => \App\Models\Article::with(['author'])
+                ->orderBy('created_at', 'DESC')
                 ->get(),
             'tags' => \App\Models\Tag::all()
         ]);

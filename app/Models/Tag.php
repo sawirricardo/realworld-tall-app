@@ -11,6 +11,8 @@ class Tag extends Model
     use HasFactory;
     use Sluggable;
 
+    protected $fillable = ['name'];
+
     public function sluggable(): array
     {
         return [
