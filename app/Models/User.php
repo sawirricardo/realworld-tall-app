@@ -69,6 +69,7 @@ class User extends Authenticatable
     public function getTokenAttribute()
     {
         $personalToken = $this->tokens->first();
+        return join('|', [$personalToken->id, $personalToken->token]);
         return $personalToken->token;
     }
 }
