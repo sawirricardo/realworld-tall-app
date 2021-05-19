@@ -6,25 +6,33 @@
                 <div class="row">
 
                     <div class="col-xs-12 col-md-10 offset-md-1">
-                        <img src="{{ $user['image'] }}" class="user-img" />
-                        <h4>{{ $user['name'] }}</h4>
+                        <img src="{{ $user->image }}" class="user-img" />
+                        <h4>{{ $user->name }}</h4>
                         <p>
-                            {{ $user['bio'] }}
+                            {{ $user->bio }}
                         </p>
                         @guest
                         <a href="{{ route('app.login') }}" class="btn btn-sm btn-outline-secondary action-btn">
                             <i class="ion-plus-round"></i>
                             &nbsp;
-                            Follow {{ $user['name'] }}
+                            Follow {{ $user->name }}
                         </a>
                         @endguest
 
                         @auth
-                        @if (auth()->id() !== $user['id'])
-                        <button class="btn btn-sm btn-outline-secondary action-btn">
+                        @if (auth()->id() !== $user->id)
+                        <button wire:click='followAuthor' class="btn btn-sm btn-outline-secondary action-btn">
+                            @if ($loggedInUser->isFollowing($user))
+                            <i class="ion-minus-round"></i>
+                            &nbsp;
+                            Unfollow {{ $user->name }}
+                            @endif
+
+                            @if (!$loggedInUser->isFollowing($user))
                             <i class="ion-plus-round"></i>
                             &nbsp;
-                            Follow {{ $user['name'] }}
+                            Follow {{ $user->name }}
+                            @endif
                         </button>
                         @endif
                         @endauth

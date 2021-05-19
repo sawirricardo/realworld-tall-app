@@ -26,17 +26,33 @@
 
                     @auth
                     @if (auth()->id() !== $article->author->id)
-                    <button class="btn btn-sm btn-outline-secondary">
+                    <button wire:click='followAuthor' class="btn btn-sm btn-outline-secondary">
+                        @if ($user->isFollowing($article->author))
+                        <i class="ion-minus-round"></i>
+                        &nbsp;
+                        Unfollow {{ $article->author->name }} <span
+                            class="counter">({{ $article->author->followersCountReadable() }})</span>
+                        @endif
+
+                        @if (!$user->isFollowing($article->author))
                         <i class="ion-plus-round"></i>
                         &nbsp;
                         Follow {{ $article->author->name }} <span
                             class="counter">({{ $article->author->followersCountReadable() }})</span>
+                        @endif
                     </button>
                     &nbsp;&nbsp;
-                    <button class="btn btn-sm btn-outline-primary">
+                    <button wire:click='favoriteArticle' class="btn btn-sm btn-outline-primary">
+                        @if ($user->hasFavorited($article))
+                        &nbsp;
+                        Unfavorite Article <span class="counter">({{ $article->favoritersCountReadable() }})</span>
+                        @endif
+
+                        @if (!$user->hasFavorited($article))
                         <i class="ion-heart"></i>
                         &nbsp;
-                        Favorite Post <span class="counter">({{ $article->favoritersCountReadable() }})</span>
+                        Favorite Article <span class="counter">({{ $article->favoritersCountReadable() }})</span>
+                        @endif
                     </button>
                     @endif
                     @endauth
@@ -89,17 +105,33 @@
 
                     @auth
                     @if (auth()->id() !== $article->author->id)
-                    <button class="btn btn-sm btn-outline-secondary">
+                    <button wire:click='followAuthor' class="btn btn-sm btn-outline-secondary">
+                        @if ($user->isFollowing($article->author))
+                        <i class="ion-minus-round"></i>
+                        &nbsp;
+                        Unfollow {{ $article->author->name }} <span
+                            class="counter">({{ $article->author->followersCountReadable() }})</span>
+                        @endif
+
+                        @if (!$user->isFollowing($article->author))
                         <i class="ion-plus-round"></i>
                         &nbsp;
                         Follow {{ $article->author->name }} <span
                             class="counter">({{ $article->author->followersCountReadable() }})</span>
+                        @endif
                     </button>
                     &nbsp;&nbsp;
-                    <button class="btn btn-sm btn-outline-primary">
+                    <button wire:click='favoriteArticle' class="btn btn-sm btn-outline-primary">
+                        @if ($user->hasFavorited($article))
+                        &nbsp;
+                        Unfavorite Article <span class="counter">({{ $article->favoritersCountReadable() }})</span>
+                        @endif
+
+                        @if (!$user->hasFavorited($article))
                         <i class="ion-heart"></i>
                         &nbsp;
-                        Favorite Post <span class="counter">({{ $article->favoritersCountReadable() }})</span>
+                        Favorite Article <span class="counter">({{ $article->favoritersCountReadable() }})</span>
+                        @endif
                     </button>
                     @endif
                     @endauth

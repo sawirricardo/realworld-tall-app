@@ -51,7 +51,7 @@
                         </a>
                     </div>
                     @empty
-
+                    <div>No articles found. Why don't you start following someone?</div>
                     @endforelse
 
                     {{-- <div class="article-preview">

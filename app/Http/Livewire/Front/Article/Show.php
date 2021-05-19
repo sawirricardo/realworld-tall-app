@@ -20,8 +20,9 @@ class Show extends Component
         $article->load(['author', 'comments']);
 
         $this->article = $article;
+
         if (auth()->check()) {
-            $this->user = \App\Models\User::find(auth()->user()->getAuthIdentifier())->toArray();
+            $this->user = \App\Models\User::find(auth()->id());
         }
 
         SEOTools::setTitle("{$article->title} | Conduit X Ricardo Sawir", false);
@@ -37,7 +38,7 @@ class Show extends Component
     {
         $this->validate();
 
-        $commenter = \App\Models\User::find(auth()->user()->getAuthIdentifier());
+        $commenter = \App\Models\User::find(auth()->id());
 
         $comment = new \App\Models\Comment();
         $comment->article_id = $this->article->id;
@@ -61,6 +62,19 @@ class Show extends Component
 
     public function followAuthor()
     {
-        //
+        $user = \App\Models\User::find(auth()->id());
+
+        $user->toggleFollow($this->article->author);
+
+        $this->article = \App\Models\Article::find($this->article->id);
+    }
+
+    public function favoriteArticle()
+    {
+        $user = \App\Models\User::find(auth()->id());
+
+        $user->toggleFavorite($this->article);
+
+        $this->article = \App\Models\Article::find($this->article->id);
     }
 }
