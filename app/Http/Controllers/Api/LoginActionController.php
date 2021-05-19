@@ -27,12 +27,19 @@ class LoginActionController extends Controller
 
         $credentials = $request->json('user');
 
-        $user = User::where('email', $credentials['email'])->first();
 
-        if ($user && Auth::attempt($credentials)) {
-            return new UserResource($user->append('token'));
+        if (!Auth::attempt($credentials)) {
+            throw ValidationException::withMessages(['email' => ['The provided credentials are incorrect.'],]);
         }
 
-        throw ValidationException::withMessages(['email' => ['The provided credentials are incorrect.'],]);
+        $user = User::where('email', $credentials['email'])->first();
+
+        $user->tokens()->where('name', '=', 'api')->delete();
+
+        $token = $user->createToken('api')->plainTextToken;
+
+        $user->token = $token;
+
+        return new UserResource($user);
     }
 }

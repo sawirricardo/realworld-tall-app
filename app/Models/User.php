@@ -37,7 +37,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'tokens'
     ];
 
     /**
@@ -57,19 +56,5 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
-    }
-
-    protected static function booted()
-    {
-        static::created(function ($user) {
-            $user->createToken($user->username);
-        });
-    }
-
-    public function getTokenAttribute()
-    {
-        $personalToken = $this->tokens->first();
-        return join('|', [$personalToken->id, $personalToken->token]);
-        return $personalToken->token;
     }
 }

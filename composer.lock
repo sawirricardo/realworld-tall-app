@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4084fa42cda6579585d667b61686bcba",
+    "content-hash": "ac1f1f7517e134540955adaddb72ff2e",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -2741,23 +2741,23 @@
         },
         {
             "name": "spatie/laravel-menu",
-            "version": "4.0.0",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-menu.git",
-                "reference": "c733c0ce7cb20b8142b1defb767fa76d86aa1bd6"
+                "reference": "1fc1da8e2c8bc896557e6f4d0cec2c3125e96d1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-menu/zipball/c733c0ce7cb20b8142b1defb767fa76d86aa1bd6",
-                "reference": "c733c0ce7cb20b8142b1defb767fa76d86aa1bd6",
+                "url": "https://api.github.com/repos/spatie/laravel-menu/zipball/1fc1da8e2c8bc896557e6f4d0cec2c3125e96d1c",
+                "reference": "1fc1da8e2c8bc896557e6f4d0cec2c3125e96d1c",
                 "shasum": ""
             },
             "require": {
                 "illuminate/auth": "^7.24|^8.0",
                 "illuminate/contracts": "^7.24|^8.0",
                 "illuminate/support": "^7.24|^8.0",
-                "php": "^8.0",
+                "php": "^7.3|^8.0",
                 "spatie/menu": "^2.8"
             },
             "require-dev": {
@@ -2801,7 +2801,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-menu/issues",
-                "source": "https://github.com/spatie/laravel-menu/tree/4.0.0"
+                "source": "https://github.com/spatie/laravel-menu/tree/3.7.1"
             },
             "funding": [
                 {
@@ -2809,7 +2809,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-03-22T15:21:27+00:00"
+            "time": "2021-03-16T07:26:57+00:00"
         },
         {
             "name": "spatie/macroable",
