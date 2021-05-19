@@ -21,7 +21,7 @@
 
                         @auth
                         @if (auth()->id() !== $user->id)
-                        <button wire:click='followAuthor' class="btn btn-sm btn-outline-secondary action-btn">
+                        <button wire:click='followUser' class="btn btn-sm btn-outline-secondary action-btn">
                             @if ($loggedInUser->isFollowing($user))
                             <i class="ion-minus-round"></i>
                             &nbsp;

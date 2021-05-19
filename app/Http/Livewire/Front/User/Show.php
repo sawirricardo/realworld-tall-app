@@ -27,7 +27,7 @@ class Show extends Component
         return view('livewire.front.user.show');
     }
 
-    public function followAuthor()
+    public function followUser()
     {
         $this->loggedInUser = \App\Models\User::find(auth()->id());
 
