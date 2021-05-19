@@ -19,7 +19,6 @@
                         <ul class="nav nav-pills outline-active">
                             @auth
                             <li class="nav-item">
-
                                 <a wire:click="$toggle('viewingPrivateFeed')"
                                     class="nav-link {{ $viewingPrivateFeed ? 'active':'' }}" href="#">Your Feed</a>
                             </li>

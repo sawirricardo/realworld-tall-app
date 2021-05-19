@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front;
 
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
 class Index extends Component

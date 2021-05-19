@@ -14,6 +14,18 @@
                             class="author">{{ $article->author->name }}</a>
                         <span class="date">{{ $article->created_at }}</span>
                     </div>
+
+                    @guest
+                    <a href="{{ route('app.login') }}" class="btn btn-sm btn-outline-secondary">
+                        <i class="ion-plus-round"></i>
+                        &nbsp;
+                        Follow {{ $article->author->name }} <span
+                            class="counter">({{ $article->author->followersCountReadable() }})</span>
+                    </a>
+                    @endguest
+
+                    @auth
+                    @if (auth()->id() !== $article->author->id)
                     <button class="btn btn-sm btn-outline-secondary">
                         <i class="ion-plus-round"></i>
                         &nbsp;
@@ -26,6 +38,8 @@
                         &nbsp;
                         Favorite Post <span class="counter">({{ $article->favoritersCountReadable() }})</span>
                     </button>
+                    @endif
+                    @endauth
 
                     @auth
                     @if ($article->author->id === auth()->user()->getAuthIdentifier())
@@ -64,20 +78,34 @@
                         <span class="date">{{ $article->created_at }}</span>
                     </div>
 
+                    @guest
+                    <a href="{{ route('app.login') }}" class="btn btn-sm btn-outline-secondary">
+                        <i class="ion-plus-round"></i>
+                        &nbsp;
+                        Follow {{ $article->author->name }} <span
+                            class="counter">({{ $article->author->followersCountReadable() }})</span>
+                    </a>
+                    @endguest
+
+                    @auth
+                    @if (auth()->id() !== $article->author->id)
                     <button class="btn btn-sm btn-outline-secondary">
                         <i class="ion-plus-round"></i>
                         &nbsp;
                         Follow {{ $article->author->name }} <span
                             class="counter">({{ $article->author->followersCountReadable() }})</span>
                     </button>
-                    &nbsp;
+                    &nbsp;&nbsp;
                     <button class="btn btn-sm btn-outline-primary">
                         <i class="ion-heart"></i>
                         &nbsp;
                         Favorite Post <span class="counter">({{ $article->favoritersCountReadable() }})</span>
                     </button>
+                    @endif
+                    @endauth
+
                     @auth
-                    @if ($article->author->id === auth()->user()->getAuthIdentifier())
+                    @if ($article->author->id === auth()->id())
                     <a class="btn btn-sm btn-outline-secondary"
                         href="{{ route('app.article.edit',['article'=>$article->id]) }}">
                         <i class="ion-edit"></i>

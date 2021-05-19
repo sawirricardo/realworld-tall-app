@@ -11,11 +11,23 @@
                         <p>
                             {{ $user['bio'] }}
                         </p>
+                        @guest
+                        <a href="{{ route('app.login') }}" class="btn btn-sm btn-outline-secondary action-btn">
+                            <i class="ion-plus-round"></i>
+                            &nbsp;
+                            Follow {{ $user['name'] }}
+                        </a>
+                        @endguest
+
+                        @auth
+                        @if (auth()->id() !== $user['id'])
                         <button class="btn btn-sm btn-outline-secondary action-btn">
                             <i class="ion-plus-round"></i>
                             &nbsp;
                             Follow {{ $user['name'] }}
                         </button>
+                        @endif
+                        @endauth
                     </div>
 
                 </div>
@@ -47,9 +59,20 @@
                                     class="author">{{ $article->author->name }}</a>
                                 <span class="date">{{ $article->created_at }}</span>
                             </div>
+
+                            @guest
+                            <a href="{{ route('app.login') }}" class="btn btn-outline-primary btn-sm pull-xs-right">
+                                <i class="ion-heart"></i> {{ $article->favoritersCountReadable() }}
+                            </a>
+                            @endguest
+
+                            @auth
+                            @if (auth()->id() !== $article->author->id)
                             <button class="btn btn-outline-primary btn-sm pull-xs-right">
                                 <i class="ion-heart"></i> {{ $article->favoritersCountReadable() }}
                             </button>
+                            @endif
+                            @endauth
                         </div>
                         <a href="{{ route('front.article.show',['article'=>$article->slug]) }}" class="preview-link">
                             <h1>{{ $article->title }}</h1>

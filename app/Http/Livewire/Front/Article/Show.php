@@ -58,4 +58,9 @@ class Show extends Component
 
         session()->flash('flash.banner', 'Successfully deleted your comment.');
     }
+
+    public function followAuthor()
+    {
+        //
+    }
 }
