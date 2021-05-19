@@ -16,7 +16,7 @@ class Index extends Component
     public function mount()
     {
         SEOTools::setTitle('Conduit X Ricardo Sawir', false);
-        SEOTools::setDescription('Real world application, implemented in Laravel Livewire');
+        SEOTools::setDescription('Real world application, implemented in Laravel Livewire by Ricardo Sawir.');
     }
 
     public function render()

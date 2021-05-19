@@ -24,6 +24,8 @@ Route::prefix('users')->group(function () {
 Route::get('articles', function () {
 });
 
+Route::get('tags', [\App\Http\Controllers\Api\TagController::class, 'index']);
+
 Route::middleware(['auth:sanctum'])
     ->group(function () {
     });
