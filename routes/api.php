@@ -21,8 +21,11 @@ Route::prefix('users')->group(function () {
     Route::post('login', \App\Http\Controllers\Api\LoginActionController::class);
 });
 
-Route::get('articles', function () {
-});
+Route::name('article')
+    ->group(function () {
+        Route::get('articles', [\App\Http\Controllers\Api\ArticleController::class, 'index']);
+    });
+
 
 Route::get('tags', [\App\Http\Controllers\Api\TagController::class, 'index']);
 

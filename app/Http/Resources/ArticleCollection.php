@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Str;
 
 class ArticleCollection extends ResourceCollection
 {
@@ -17,5 +18,10 @@ class ArticleCollection extends ResourceCollection
     public function toArray($request)
     {
         return parent::toArray($request);
+    }
+
+    public function with($request)
+    {
+        return ['articlesCount' => $this->collection->count()];
     }
 }
