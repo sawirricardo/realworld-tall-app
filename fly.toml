@@ -15,6 +15,9 @@ processes = []
     PHP_VERSION = "8.2"
 
 [env]
+  APP_NAME = "Realworld TALL app"
+  DB_DATABASE = "pgsql"
+  APP_URL = "https://realworld-tall-app.fly.dev"
   APP_ENV = "production"
   LOG_CHANNEL = "stderr"
   LOG_LEVEL = "info"
