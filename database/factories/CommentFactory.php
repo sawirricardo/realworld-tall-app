@@ -22,9 +22,9 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'body' => $this->faker->text(),
-            'article_id' => $this->faker->randomElement(range(1, 50)),
-            'user_id' => $this->faker->randomElement(range(1, 10)),
+            'body' => fake()->text(),
+            'article_id' => fake()->randomElement(range(1, 50)),
+            'user_id' => fake()->randomElement(range(1, 10)),
         ];
     }
 }
