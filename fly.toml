@@ -16,7 +16,7 @@ processes = []
 
 [env]
   APP_NAME = "Realworld TALL app"
-  DB_DATABASE = "pgsql"
+  DB_CONNECTION = "pgsql"
   APP_URL = "https://realworld-tall-app.fly.dev"
   APP_ENV = "production"
   LOG_CHANNEL = "stderr"
